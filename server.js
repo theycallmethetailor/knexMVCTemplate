@@ -8,11 +8,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.set('view engine', 'ejs');
+
+require("./config/session.js")(app); // Link the session file
 
 var routes_setter = require('./config/routes.js');
 routes_setter(app);
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log('Listening on', port);
 });
